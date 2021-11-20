@@ -1,158 +1,66 @@
-// función: es un bloque de código encapsulado que permite ser ejecutado
-// tantas veces el usuario lo requiera a partir del nombre con el que se 
-// declare
+// Estructuras de datos
 
-// declaración 
-// function nombredelafuncion(){}
+// Arreglos: estrucuras secuenciales
+// ordenados por índices númericos iniciando
+// en 0 y terminado en n-1, donde n es el total de elementos
 
-// funcion de saludo
+// [1,2,3,4,5,6,7,8,9,0]
 
-// function saludo() {
-//     console.log('Hola Mundo')
-// }
+// declarar Arreglos
+// const alumnos = []
+const alumnos = ['Pedro', 'Maria']
 
-// // invocar
-// saludo('pedro')
+// Puedo obtener un valor de mi arreglo
+console.log(alumnos[1]) // Maria
+console.log(alumnos[2]) // undefined
 
-// argumentos o parametros
-// son valores que llegan a la funcion para poder ser ocupados
-// dentro de la misma
+// Puedo agregar valores
+alumnos.push('Armando') // 2
+alumnos.push('Lucia') // 3
+alumnos.push('Sergio') // 4
 
-// los argumentos van dentro de los parentesis, van en orden separados
-// por una coma
+console.log(alumnos)
 
-// function saludo(nombre) {
-//     console.log('Hola '+ nombre);
-// }
+// modificar valores
+alumnos[3] = 'Roman'
 
-// saludo('Gabriela')
+console.log(alumnos)
 
-
-// function operacion(numero1, numero2, operacion) {
-//     if (operacion === 'suma') {
-//         console.log(numero1 + numero2);
-//     } else {
-//         console.log(numero1 - numero2);
-//     }
-// }
-
-// operacion(6, 7, '');
-
-// const nombre = prompt('Cual es tu nombre: ')
-// const edad = Number(prompt('Cual es tu edad: '))
-
-// console.log('Hola '+ nombre)
-
-// function validacion(nombreUsuario, edadUsuario) {
-//     if (edadUsuario > 18) {
-//         console.log('Puede votar')
-//     } else {
-//         const caracter = nombreUsuario[2];
-//         switch(caracter) {
-//             case 'a':
-//             case 'e':
-//             case 'i':
-//             case 'o':
-//             case 'u':
-//                 console.log('Puede votar por esta ocasión');
-//                 break;
-//             default:
-//                 console.log('Lo sentimos, no puede votar')
-//         }
-//     }
-// }
-
-// validacion(nombre, edad);
-
-// console.log('Muchas gracias')
-
-// valores por defecto: son valores que se asignan a los argumentos cuando pueden ser opcionales
-
-// function saludar(nombre='Usuario') {
-//     console.log('Hola ' + nombre)
-// }
-
-// saludar()
-
-// function operacion(numero1, numero2, operacion='suma', nombre='Pedro', calificacion='8') {
-//     console.log(operacion)
-//     console.log(numero1)
-//     console.log(numero2)
-//     if (operacion === 'suma') {
-//         console.log(numero1 + numero2);
-//     } else {
-//         console.log(numero1 - numero2);
-//     }
-// }
-
-// operacion(6, 7);
-
-// Agencia de viajes al interior de la republica
-
-// Nombre
-// Fecha de inicio
-// Fecha de termino
-// viajar al extranjero
-// presupuesto
-
-// const nombre = prompt('Nombre: ')
-// const fec_ini = prompt('Fecha de inicio: ')
-// const fec_fin = prompt('Fecha de termino: ')
-// const extranjero = prompt('Viajas al extranjero: ')
-// const presupuesto = Number(prompt('Presupuesto: '))
-
-// function validarExtranjero(nombre, viajeExtranjero=false) {
-//     if (!viajeExtranjero) {
-//         console.log(`Validaremos su presupuesto con las fechas que nos entrego`)
-//         console.log(`Muchas gracias por preferirnos ${nombre}`)
-//     } else {
-//         console.log(`Lo lamentamos ${nombre} aún no tenemos rutas fuera del país`)
-//     }
-// }
+console.log(alumnos.length)
 
 
-// regresar valores de la funcion, ocupamos la palabra resevada return por lo cual es la ultima
-// línea que se ejecutará de la función
+// eliminar elementos de arreglo
 
-// function hacerSandwich(ingrediente1, ingrediente2, ingrediente3, mayonesa = true) {
-//     let sandwich = 'pan superior';
-//     sandwich += ingrediente1;
-//     sandwich += ingrediente2
-//     return sandwich
-//     sandwich += ingrediente3
-// }
+delete alumnos[3]
 
+console.log(alumnos)
+console.log(alumnos[3]) // Sergio
+console.log(alumnos[4]) // Sergio
 
-// regresar en el return: cualquier tipo de dato que javascript conozca
+// pop => me entrega el ultimo elemento del arreglo y lo elimina del arreglo
 
+const alumnoEliminado = alumnos.pop() // Sergio
 
-// function saludar(nombre) {
-//     return `Hola ${nombre}`
-// }
+console.log(alumnos[4]) // Sergio
+console.log(alumnos)
 
-// console.log(saludar('Pedro'))
-// console.log(saludar('Marina'))
-// console.log(saludar('Jacob'))
-// console.log(saludar('Irma'))
-// console.log(saludar(''))
+// splice
+// inicio, posicionAEliminar, elemento1,elemento2,....,elementon
 
-function estatusAlumno(cal1, cal2, cal3) {
-    const promedio = (cal1 + cal2 + cal3) / 3;
-    let estatus = 'aprobado';
-    if (promedio < 7) {
-        estatus = 'reprobado';
-    }
-    // return [promedio, estatus]
-    return { promedio, estatus }
+alumnos.splice(2,0,'Rogelio')
+
+console.log(alumnos)
+
+alumnos.splice(3,2)
+
+console.log(alumnos)
+
+// obtener el total de elementos
+
+console.log(alumnos.length)
+
+// recorrer un arreglo
+
+for (let i = 0; i < alumnos.length; i++ ) {
+    console.log(alumnos[i])
 }
-
-// console.log(estatusAlumno(9,9,4))
-// console.log(estatusAlumno(7,6,8))
-// console.log(estatusAlumno(5,6,3))
-const alumno1 = estatusAlumno(9,9,4)
-const alumno2 = estatusAlumno(7,6,8)
-const alumno3 = estatusAlumno(5,6,3)
-
-
-
-
