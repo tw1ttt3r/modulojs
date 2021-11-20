@@ -1,141 +1,158 @@
-// estructura de control
+// función: es un bloque de código encapsulado que permite ser ejecutado
+// tantas veces el usuario lo requiera a partir del nombre con el que se 
+// declare
 
-// condicionales
-// if 
+// declaración 
+// function nombredelafuncion(){}
 
-// if() {}
+// funcion de saludo
 
-// condicionales
-// ==  valor
-// === valor y tipo
-// != diferente a nivel valor
-// !== diferente a nivel valor y tipo
-// > mayor que
-// < menor que
-// >= mayor o igual que
-// <= menor o igual que
+// function saludo() {
+//     console.log('Hola Mundo')
+// }
+
+// // invocar
+// saludo('pedro')
+
+// argumentos o parametros
+// son valores que llegan a la funcion para poder ser ocupados
+// dentro de la misma
+
+// los argumentos van dentro de los parentesis, van en orden separados
+// por una coma
+
+// function saludo(nombre) {
+//     console.log('Hola '+ nombre);
+// }
+
+// saludo('Gabriela')
 
 
-// logicos
-// && y
-// || o
-// ! negacion
-
-
-// if sencillo
-// if (true) {}
-
-// if else
-//if (true) {} else {}
-
-// if else if
-// if (true) {} else if (true) {} else {}
-
-// if anidados
-// if (true) {
-//     if (true) {
-//         if (true) {}
+// function operacion(numero1, numero2, operacion) {
+//     if (operacion === 'suma') {
+//         console.log(numero1 + numero2);
+//     } else {
+//         console.log(numero1 - numero2);
 //     }
 // }
 
-// switch 
-// valor de comparacion
-// una lista de casos con un valor
+// operacion(6, 7, '');
 
-switch(delegacion) {
-    case 'Azcapotzalco':
-    case 'Benito Juárez':
-        // to do
-        break;
-    case 'Coyoacán':
-        break;
-    default:
-        // si no existe en la lista de casos
-}
+// const nombre = prompt('Cual es tu nombre: ')
+// const edad = Number(prompt('Cual es tu edad: '))
 
-let operacion = '';
-let numero1=4;
-let numero2=8;
+// console.log('Hola '+ nombre)
 
-switch(operacion) {
-    case 'suma':
-        console.log(numero1 + numero2)
-        break;
-    case 'resta':
-        console.log(numero1 - numero2)
-        break;
-    case 'multiplicacion':
-        console.log(numero1 * numero2)
-        break;
-    case 'division':
-        console.log(numero1 / numero2)
-        break;
-    default:
-        console.log('operacion no valida')
-}
-
-// while: mientras la condicion se cumpla ejecutare el código
-
-// while (condicion) {}
-
-let numero = 10;
-
-while(numero !== 0) {
-    console.log(numero);
-    numero--;
-}
-
-// do while: va ejecutar el do una primera vez y luego
-// mientras la condicion se cumpla ejecutara el código
-
-let numero2 = 20;
-
-do {
-    numero2 = numero2 / 2;
-    console.log(numero2);
-} while(numero2 !== 0)
-
-
-// como pueden tomar datos del usuario
-// prompt
-
-// declarar una variable
-// funcion prompt
-// const nombre = prompt('cual es tu nombre');
-
-// tipo de dato de regreso es un string
-
-// for,  se va a ejecutar hasta que la condicion sea cumpla
-
-// for(iniciacion; condicion; incremento) {}
-// for (let i = 1; i <= 10; i++) {
-//     console.log(i)
+// function validacion(nombreUsuario, edadUsuario) {
+//     if (edadUsuario > 18) {
+//         console.log('Puede votar')
+//     } else {
+//         const caracter = nombreUsuario[2];
+//         switch(caracter) {
+//             case 'a':
+//             case 'e':
+//             case 'i':
+//             case 'o':
+//             case 'u':
+//                 console.log('Puede votar por esta ocasión');
+//                 break;
+//             default:
+//                 console.log('Lo sentimos, no puede votar')
+//         }
+//     }
 // }
 
-const nombreEjercicio = prompt('Proporcion aun nombre:') // esmeralda // 9
-let nuevoNombre='';
-for(let i=0; i < nombreEjercicio.length; i++) {
-    // nombreEjercicio[9] // a
-    switch(nombreEjercicio[i]) {
-        case 'a':
-            nuevoNombre += 1 // nuevoNomber // 2sm2r1ld1
-            break;
-        case 'e':
-            nuevoNombre += 2 //nuevoNombre // 2sm2
-            break;
-        case 'i':
-            nuevoNombre += 3
-            break;
-        case 'o':
-            nuevoNombre += 4
-            break;
-        case 'u':
-            nuevoNombre += 5
-            break;
-        default:
-            nuevoNombre += nombreEjercicio[i] // 2smr1ld
-            /// el caracter es una consonante
+// validacion(nombre, edad);
+
+// console.log('Muchas gracias')
+
+// valores por defecto: son valores que se asignan a los argumentos cuando pueden ser opcionales
+
+// function saludar(nombre='Usuario') {
+//     console.log('Hola ' + nombre)
+// }
+
+// saludar()
+
+// function operacion(numero1, numero2, operacion='suma', nombre='Pedro', calificacion='8') {
+//     console.log(operacion)
+//     console.log(numero1)
+//     console.log(numero2)
+//     if (operacion === 'suma') {
+//         console.log(numero1 + numero2);
+//     } else {
+//         console.log(numero1 - numero2);
+//     }
+// }
+
+// operacion(6, 7);
+
+// Agencia de viajes al interior de la republica
+
+// Nombre
+// Fecha de inicio
+// Fecha de termino
+// viajar al extranjero
+// presupuesto
+
+// const nombre = prompt('Nombre: ')
+// const fec_ini = prompt('Fecha de inicio: ')
+// const fec_fin = prompt('Fecha de termino: ')
+// const extranjero = prompt('Viajas al extranjero: ')
+// const presupuesto = Number(prompt('Presupuesto: '))
+
+// function validarExtranjero(nombre, viajeExtranjero=false) {
+//     if (!viajeExtranjero) {
+//         console.log(`Validaremos su presupuesto con las fechas que nos entrego`)
+//         console.log(`Muchas gracias por preferirnos ${nombre}`)
+//     } else {
+//         console.log(`Lo lamentamos ${nombre} aún no tenemos rutas fuera del país`)
+//     }
+// }
+
+
+// regresar valores de la funcion, ocupamos la palabra resevada return por lo cual es la ultima
+// línea que se ejecutará de la función
+
+// function hacerSandwich(ingrediente1, ingrediente2, ingrediente3, mayonesa = true) {
+//     let sandwich = 'pan superior';
+//     sandwich += ingrediente1;
+//     sandwich += ingrediente2
+//     return sandwich
+//     sandwich += ingrediente3
+// }
+
+
+// regresar en el return: cualquier tipo de dato que javascript conozca
+
+
+// function saludar(nombre) {
+//     return `Hola ${nombre}`
+// }
+
+// console.log(saludar('Pedro'))
+// console.log(saludar('Marina'))
+// console.log(saludar('Jacob'))
+// console.log(saludar('Irma'))
+// console.log(saludar(''))
+
+function estatusAlumno(cal1, cal2, cal3) {
+    const promedio = (cal1 + cal2 + cal3) / 3;
+    let estatus = 'aprobado';
+    if (promedio < 7) {
+        estatus = 'reprobado';
     }
+    // return [promedio, estatus]
+    return { promedio, estatus }
 }
-console.log(nuevoNombre) // 2sm2r1ld1
-console.log('Muchas gracias por ocuparlo')
+
+// console.log(estatusAlumno(9,9,4))
+// console.log(estatusAlumno(7,6,8))
+// console.log(estatusAlumno(5,6,3))
+const alumno1 = estatusAlumno(9,9,4)
+const alumno2 = estatusAlumno(7,6,8)
+const alumno3 = estatusAlumno(5,6,3)
+
+
+
+
