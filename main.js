@@ -1,164 +1,81 @@
-// Estructuras de datos
-
-// Arreglos: estrucuras secuenciales
-// ordenados por índices númericos iniciando
-// en 0 y terminado en n-1, donde n es el total de elementos
-
-// [1,2,3,4,5,6,7,8,9,0]
-
-// declarar Arreglos
-// const alumnos = []
-// const alumnos = ['Pedro', 'Maria']
-
-// Puedo obtener un valor de mi arreglo
-// console.log(alumnos[1]) // Maria
-// console.log(alumnos[2]) // undefined
-
-// Puedo agregar valores
-// alumnos.push('Armando') // 2
-// alumnos.push('Lucia') // 3
-// alumnos.push('Sergio') // 4
-
-// console.log(alumnos)
-
-// modificar valores
-// alumnos[3] = 'Roman'
-
-// console.log(alumnos)
-
-// console.log(alumnos.length)
-
-
-// eliminar elementos de arreglo
-
-// delete alumnos[3]
-
-// console.log(alumnos)
-// console.log(alumnos[3]) // Sergio
-// console.log(alumnos[4]) // Sergio
-
-// pop => me entrega el ultimo elemento del arreglo y lo elimina del arreglo
-
-// const alumnoEliminado = alumnos.pop() // Sergio
-
-// console.log(alumnos[4]) // Sergio
-// console.log(alumnos)
-
-// splice
-// inicio, posicionAEliminar, elemento1,elemento2,....,elementon
-
-// alumnos.splice(2,0,'Rogelio')
-
-// console.log(alumnos)
-
-// alumnos.splice(3,2)
-
-// console.log(alumnos)
-
-// obtener el total de elementos
-
-// console.log(alumnos.length)
-
-// recorrer un arreglo
-
-// for (let i = 0; i < alumnos.length; i++ ) {
-//     console.log(alumnos[i])
-// }
-
-// objetos: son estructuras que se basan en llave-valor propiedades y valores
-// tenemos acciones propias del objeto es decir tenemos metodos.
-
-// declaracion de un objeto
-
-// const persona = {};
-
-// // agregar valores a un objeto
-// persona['nombre'] = 'Sergio';
-
-// // obtener valor de una propiedad
-
-// // acceder a la propiedad atraves del operador .
-// persona.nombre // Sergio
-
-// persona['nombre'] // Sergio
-
-// // eliminar propiedades
-// delete persona.nombre
-// delete persona['nombre']
-
-
-// ejemplo
-
-// mexico = {
-//     comida: 'chilaquiles',
-//     idioma: 'español',
-//     estados: ['Chihuahua', 'CDMX'],
-//     ultimoPresidente: 'AMLO',
-// }
-
-
-// // preguntar que quiero saber de México
-// // idioma
-// // comida
-// // estados
-// // ultimoPresidente
-
-// const respuesta = prompt('Que quieres saber: ')
-
-// console.log(mexico[respuesta])
-
-
-
-// metodos:  son acciones del objeto
-
-// funciones anonimas: no tener un nombre, por ende solo las puedo ejecutar una sola vez
-// almacenar en una variable para poder ejecutarla mas de una vez
-
-
-// ES5 function() {}
-// ES6 () => {}, return implicito
-// numero => numero*2
-// _ => {}
-// _ => {  return algo }
-
-// persona.caminar = () => {
-//     console.log('Persona esta caminando')
-// }
-
-// persona.caminar() // Persona esta caminando
-
-// persona.presentar = (nombre) => `Soy ${nombre}`
-
-// persona.presentar(persona.nombre)
-
-
-
-// ejemplo
-
-const alumnos = [];
-const materias = ['Matematicas', 'Historia', 'Sociales', 'Artes']
-let respuesta = 's';
-
+const grupos = ['grupoA', 'grupoB', 'grupoC', 'grupoD'];
+const materias = ['Matematicas', 'Español', 'Geografia', 'Ingles', 'Sociales'];
+const data = {
+    alumnosData: []
+};
+let respuesta = true;
 do {
-    const datosAlumno = {};
-    let promedio = 0;
-    datosAlumno.nombre = prompt('Nombre del alumno')
-    for(let i=0; i < materias.length; i++) {
-        datosAlumno[materias[i].toLowerCase()] = Number(prompt(`Calificacion de ${materias[i]}`))
-        promedio += datosAlumno[materias[i].toLowerCase()];
+    const dataAlumno = {
+        calificaciones: {}
+    };
+    dataAlumno['nombre'] = prompt('Nombre del alumno: ');
+    dataAlumno['grupo'] = prompt('Grupo del alumno: ');
+    dataAlumno['promedio'] = 0;
+    for (let materia of materias) {
+        const calificacion = Number(prompt(`Calificación de ${materia}: `));
+        dataAlumno['promedio'] += calificacion;
+        dataAlumno.calificaciones[materia.replace('ñ', 'n').toLocaleLowerCase()] = calificacion;
     }
-    datosAlumno.promedio = promedio / materias.length;
-    datosAlumno.estatus = datosAlumno.promedio > 7 ? 'Aprobo' : 'Reprobo';
-    alumnos.push(datosAlumno)
-    respuesta = prompt('Agregar nuevo registro: s[Si] n[No]').toLowerCase()
+    dataAlumno['promedio'] = dataAlumno['promedio'] / materias.length;
+    dataAlumno['status'] = dataAlumno['promedio'] < 7 ? 'Reprobo' : 'Aprobo';
+    data.alumnosData.push(dataAlumno);
+    const resp = prompt('Registrar un alumno más?: [s]Si [n]No').toLocaleLowerCase();
+    respuesta = resp === 's' ? true : false;
+} while(respuesta);
 
-} while(respuesta === 's')
 
-for(let i = 0; i < alumnos.length; i++) {
-    let resultado = `El alumno ${alumnos[i].nombre} con calificaciones \n`;
-    for(let j=0; j < materias.length; j++) {
-        resultado += `${materias[j]}: ${alumnos[i][materias[j].toLowerCase()]} \n`
+const resumen = {};
+
+// alumnos por grupo
+for(let alumno of data.alumnosData) {
+    console.log(alumno)
+    const infoAlumno = `${alumno.nombre} ${alumno.promedio} ${alumno.status}`;
+    let califAlumno = ``;
+    for (let materia of materias) {
+        califAlumno += `${materia}: ${alumno.calificaciones[materia.replace('ñ', 'n').toLocaleLowerCase()]} \n`;
     }
-    resultado += `${alumnos[i].estatus}`;
-    console.log(resultado)
+    califAlumno += `\n`;
+    if(resumen[alumno.grupo] === undefined) {
+        resumen[alumno.grupo] = [];
+    }
+    resumen[alumno.grupo].push({infoAlumno: infoAlumno, califAlumno: califAlumno, promedio: alumno.promedio});
 }
+
+const keysGrupos = Object.keys(resumen); // ['grupoA', 'grupoC',...'grupoN']
+console.log('llaves de grupos: ', keysGrupos);
+
+// promedio por grupo
+for (let grupo of keysGrupos) {
+    const grupoAlumnos = resumen[grupo];
+    const totAlumGrupo = grupoAlumnos.length;
+    let promGrupo = 0;
+    for (let alumno of grupoAlumnos) {
+        promGrupo += alumno.promedio;
+    }
+    promGrupo = promGrupo / totAlumGrupo;
+    resumen[grupo].promedioTotal = promGrupo;
+}
+
+const promMaterias = {};
+
+// promedio por materia
+for(let alumno of data.alumnosData) {
+    for (let materia of materias) {
+        if (promMaterias[materia.replace('ñ', 'n').toLocaleLowerCase()] === undefined) {
+            promMaterias[materia.replace('ñ', 'n').toLocaleLowerCase()] = [];
+        }
+        promMaterias[materia.replace('ñ', 'n').toLocaleLowerCase()].push(alumno.calificaciones[materia.replace('ñ', 'n').toLocaleLowerCase()])
+    }
+}
+resumen['promedioMaterias'] = {};
+for (let materia of materias) {
+    let promTotal = 0;
+    for (let calif of promMaterias[materia.replace('ñ', 'n').toLocaleLowerCase()]) {
+        promTotal += calif;
+    }
+    resumen.promedioMaterias[materia.replace('ñ', 'n').toLocaleLowerCase()] = promTotal / promMaterias[materia.replace('ñ', 'n').toLocaleLowerCase()].length;
+}
+
+
+console.log('data: ', data);
+console.log('resumen: ', resumen);
