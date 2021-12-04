@@ -5,9 +5,13 @@ body {
     justify-content: center;
 }
 
-.profileBio {
-    height: 150px;
-    overflow-y: scroll;
+ul {
+    list-style: none;
+    display: flex;
+}
+
+ul > li {
+    margin-right: 16px;
 }
 
 .profileImage {
@@ -19,9 +23,4 @@ body {
     display: flex;
     flex-direction: column;
     width: 200px;
-}
-
-.actionsStyle {
-    display: flex;
-    justify-content: space-between;
 }
